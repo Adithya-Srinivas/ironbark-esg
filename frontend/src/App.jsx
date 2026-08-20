@@ -14,9 +14,9 @@ function App() {
 
   useEffect(() => {
     Promise.all([
-      axios.get('/api/emissions/monthly/'),
-      axios.get('/api/incidents/summary/'),
-      axios.get('/api/data-quality/'),
+     axios.get(`${import.meta.env.VITE_API_URL}/api/emissions/monthly/`),
+     axios.get(`${import.meta.env.VITE_API_URL}/api/incidents/summary/`),
+     axios.get(`${import.meta.env.VITE_API_URL}/api/data-quality/`),
     ]).then(([emRes, incRes, dqRes]) => {
       setEmissions(emRes.data)
       setIncidents(incRes.data)
