@@ -9,4 +9,4 @@ COPY . .
 
 EXPOSE 8000
 
-CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD python manage.py migrate && python manage.py ingest_data && python manage.py run_ai_classification && gunicorn config.wsgi:application --bind 0.0.0.0:8000
